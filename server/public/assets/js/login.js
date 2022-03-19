@@ -8,13 +8,9 @@ if (localStorage.token !== undefined) {
   }
 }
 
-let login_field = document.querySelector("#login");
-let password_field = document.querySelector("#password");
-let login_button = document.querySelector("#login_btn");
-
-login_button.addEventListener("click", async () => {
-  let login = login_field.value;
-  let password = password_field.value;
+$("#login_btn").click(async () => {
+  let login = $("#login").val();
+  let password = $("#password").val();
 
   let resp = await user.auth(login, password);
 
@@ -22,6 +18,7 @@ login_button.addEventListener("click", async () => {
     alert(resp.message);
   } else {
     localStorage.setItem("token", resp.jwt);
+    alert(`Привет, ${login}`);
     window.location.href = "/index.html";
   }
 });

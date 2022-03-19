@@ -5,6 +5,8 @@ if (localStorage.token === undefined) {
 } else {
   let me = await user.me(localStorage.token);
 
+  window.user = me;
+
   if (me.error) {
     window.location.href = "/login.html";
   }

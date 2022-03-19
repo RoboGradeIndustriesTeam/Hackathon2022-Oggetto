@@ -34,6 +34,7 @@
   border-radius: 12px;
   min-height: 100px;
   max-width: 100px;
+  z-index: 0;
 }
 
 .btnn {
@@ -43,17 +44,26 @@
   background: linear-gradient(180deg, #5561ff 0%, #3643fc 100%, #3643fc 100%);
 }
 
+.btnn-2 {
+  color: white;
+  width: 100%;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #4b4fa0 0%, #44488b 100%);
+}
+
 .cale-btn:hover {
   color: white;
   background-color: #6e7198;
-}
-.fullSc {
-  height: 100vh;
 }
 
 .btnn:hover {
   color: white;
   background: linear-gradient(180deg, #434dcd 0%, #2731be 100%, #2630ba 100%);
+}
+
+.btnn-2:hover {
+  color: white;
+  background: linear-gradient(180deg, #3a3d7d 0%, #333669 100%);
 }
 
 .cale-btn-sel {
@@ -131,6 +141,9 @@ body {
   top: 0px;
   background: #373951;
   border-radius: 50px;
+  z-index: 5;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .cal-cal {
@@ -149,7 +162,9 @@ body {
   background: #373951;
   border-radius: 24px;
   margin-left: 16px;
-  overflow-y: scroll;
+  padding-bottom: 20px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 .eve-header {
@@ -157,6 +172,8 @@ body {
   top: 0;
   background-color: #373951;
   border-radius: 50px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .eve-header-text {
@@ -265,4 +282,61 @@ body {
   padding-bottom: 15px;
   padding-right: 15px;
   color: var(--bs-gray-400);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 13px;
+  background-color: #3e405b;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: #2d2f45;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.custom-scrollbar {
+  overflow-y: scroll;
+}
+
+.eve-modal-arcive-header {
+  padding-bottom: 40px;
+}
+
+.tags {
+  font-size: 14px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-radius: 12px;
+  margin: 0;
+}
+
+.profile-input {
+  border-radius: 12px !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: white;
+  border-color: #6e7198;
+}
+
+.profile-input::-moz-placeholder {
+  color: var(--bs-gray-300);
+}
+
+.profile-input::-webkit-input-placeholder {
+  color: var(--bs-gray-300);
+}
+
+.profile-input-no-margin {
+  margin-bottom: 0 !important;
+}
+
+.cont-help {
+  background: #434884;
+  border-radius: 24px;
+  margin-bottom: 20px;
+}
+
+.cal-btn-week-end {
 }

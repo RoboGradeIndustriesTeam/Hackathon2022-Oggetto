@@ -1,120 +1,208 @@
 import event from "./event.js";
 
-let events_container = document.querySelector("#events");
+let loader = document.querySelector(".loader");
 
-let events = await event.getAll(localStorage.token);
+const loadData = async () => {
+  let events = await event.getAll(localStorage.token);
 
-if (events.error) {
-  alert(`При загрузке событий произошла ошибка: ${events.message}`);
-} else {
-  events_container.innerHTML = events.events.reverse().map(
-    (e) => `<div class="container eve-eve-container">
-                        <h3 class="eve-eve-h">${e.title}</h3>
-                        <p class="text-nowrap text-truncate eve-eve-p">${
-                          e.desc
-                        }</p>
-                        <p class="text-muted">${new Date(e.date).toLocaleString(
-                          "ru",
-                          {
-                            day: "2-digit",
-                            month: "long",
-                            year: "numeric",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          }
-                        )}</p>
-                        <a class="btn btnn btn-sel eve-eve-btn" href="${
-                          e.link
-                        }">Перейти...</a>
-                    </div>`
-  );
+  if (events.error) {
+    alert(`Ошибка пре загрузке событий: ${events.message}`);
+  } else {
+    let innerHTMLOfEvents = ``;
 
-  let day_click = (e) => {
-    let day = Number(e.target.innerText);
-
-    let day_events = events.events
-      .reverse()
-      .filter((i) => new Date(i.date).getDate() === day);
-    let cals_months = document
-      .querySelector(".cal-header > h5")
-      .innerText.split(" - ");
-
-    let months = {
-      январь: 1,
-      февраль: 2,
-      март: 3,
-      апрель: 4,
-      май: 5,
-      июнь: 6,
-      июль: 7,
-      август: 8,
-      сентябрь: 9,
-      октябрь: 10,
-      ноябрь: 11,
-      декабрь: 12,
-    };
-
-    let now_month =
-      months[cals_months[(cals_months.length - 1) / 2].toLowerCase()];
-
-    let date = new Date();
-    date.setDate(day);
-    date.setMonth(now_month - 1);
-    let day_title = date.toLocaleString("ru", {
-      day: "2-digit",
-      month: "long",
-    });
-
-    let modal = new bootstrap.Modal(document.getElementById("modal-1"), {});
-
-    let day_element = document.querySelector("#modal-day");
-    day_element.innerText = day_title;
-
-    let events_el = document.querySelector("#modal-events");
-    events_el.innerHTML = day_events
+    innerHTMLOfEvents += events.events
       .map(
-        (i) => `<div class="container eve-modal-eve-container">
-                            <div class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row">
-                                <div class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center">
-                                    <h4 class="eve-modal-eve-header-h">${
-                                      i.title
-                                    }</h4>
-                                </div>
-                                <div class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"><a class="btn btn-sm btnn eve-modal-chat-btn" href="${
-                                  i.link
-                                }">Перейти</a></div>
-                            </div>
-                            <p class="eve-modal-eve-body-p">${i.desc}</p>
-                            <p class="ml-5 text-muted">От ${
-                              i.organizator.login
-                            }</p>
-                            <p class="ml-5 text-muted">Будет в ${new Date(
-                              i.date
-                            ).toLocaleString("ru", {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })}</p>
-                        </div>`
+        (i) => `<div class="container eve-eve-container">
+        <h3 class="eve-eve-h">${i.title}</h3>
+        <p class="text-nowrap text-truncate eve-eve-p">
+          ${i.desc}
+        </p>
+        <p class="text-nowrap text-truncate eve-eve-p">
+          От: ${i.organizator.login}
+        </p>
+        <div class="text-nowrap d-xl-flex justify-content-xl-start">
+          ${i.tags
+            .map(
+              (j) => `
+          <div class="alert alert-success tags" role="alert" style="margin-bottom: 15px; margin-right: 15px">
+          <span><strong>${j}</strong></span>
+        </div>
+          `
+            )
+            .join("\n")}
+        </div>
+        <a class="btn btnn btn-sel eve-eve-btn" href="${i.link}">
+          Перейти в чат...
+        </a>
+      </div>`
       )
       .join("\n");
 
-    modal.toggle();
-  };
-  let days_buttons = document
-    .querySelector(".cal-cal")
-    .querySelectorAll(".row > .col > button");
+    innerHTMLOfEvents += `
+        <div class="container eve-eve-container" style="padding-top: 24px">
+        <a class="btn btn-lg btnn-2 eve-eve-btn" role="button" href="list.html">Все события</a><button
+          class="btn btn-lg btnn-2 eve-eve-btn" data-bs-toggle="modal" data-bss-tooltip="" type="button"
+          data-bs-target="#modal-archive" title="События которые уже прошли">
+          Архив событий
+        </button>
+      </div>
+        `;
 
-  for (let daysButton of days_buttons) {
-    daysButton.addEventListener("click", day_click);
-
-    let day = Number(daysButton.innerText);
-
-    let day_events = events.events
-      .reverse()
-      .filter((i) => new Date(i.date).getDate() === day);
-
-    if (day_events.length > 0) {
-      if (!daysButton.disabled) daysButton.className = "btn cale-btn-sel";
-    }
+    let eventsEl = document.querySelector("#events");
+    eventsEl.innerHTML = innerHTMLOfEvents;
   }
-}
+};
+
+await loadData();
+loader.classList.remove("loader--active");
+
+let carousel = 1;
+let carouselMax = 12;
+const carouselData = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];
+
+let renderCalendar = () => {
+  let items = Array.prototype.slice.call(
+    document.querySelector("#calendar").querySelectorAll(".row > .col")
+  );
+
+  let buttons = items.map((i) => i.querySelector("button"));
+
+  let renderCarouselMonth = (offset, maxDays) => {
+    let j = 1;
+    let k = 1;
+
+    buttons.forEach((i) => {
+      i.disabled = false;
+      i.style.display = "block";
+
+      if (j < offset) {
+        // i.innerText = maxDays - offset + j;
+        i.disabled = true;
+        i.style.display = "none";
+        j++;
+      } else {
+        if (k - 1 >= maxDays) {
+          i.disabled = true;
+          i.style.display = "none";
+        } else {
+          i.innerText = k;
+          i.style.display = "block";
+
+          k++;
+        }
+      }
+    });
+  };
+
+  let offset, maxDays;
+
+  switch (carousel) {
+    case 1:
+      offset = 6;
+      maxDays = 31;
+      break;
+    case 2:
+      Date.prototype.daysInMonth = function () {
+        return 32 - new Date(this.getFullYear(), this.getMonth(), 32).getDate();
+      };
+
+      let now = new Date();
+      now.setMonth(1);
+
+      offset = 2;
+      maxDays = now.daysInMonth();
+      break;
+    case 3:
+      offset = 2;
+      maxDays = 30;
+      break;
+    case 4:
+      offset = 5;
+      maxDays = 31;
+      break;
+    case 5:
+      offset = 7;
+      maxDays = 30;
+      break;
+    case 6:
+      offset = 3;
+      maxDays = 31;
+      break;
+    case 7:
+      offset = 5;
+      maxDays = 30;
+      break;
+    case 8:
+      offset = 0;
+      maxDays = 31;
+      break;
+    case 9:
+      offset = 4;
+      maxDays = 30;
+      break;
+    case 10:
+      offset = 6;
+      maxDays = 31;
+      break;
+    case 11:
+      offset = 2;
+      maxDays = 30;
+      break;
+    case 12:
+      offset = 3;
+      maxDays = 31;
+      break;
+  }
+
+  renderCarouselMonth(offset, maxDays);
+};
+let renderCarousel = () => {
+  let carEl = document.querySelector("#carousel");
+
+  let text = `${carouselData[carousel - 1]}`;
+
+  let innerHTML = `<span data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="left"><i
+    class="fa fa-arrow-left" onclick="left()"></i></span>&nbsp; &nbsp;${text}&nbsp; &nbsp;<span
+  data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right"><i
+    class="fa fa-arrow-right"  onclick="right()"></i></span>`;
+
+  carEl.innerHTML = innerHTML;
+
+  renderCalendar();
+};
+
+let left = () => {
+  carousel += 1;
+
+  if (carousel > carouselMax) {
+    carousel = 1;
+  }
+  renderCarousel();
+};
+
+let right = () => {
+  carousel -= 1;
+
+  if (carousel < 1) {
+    carousel = carouselMax;
+  }
+  renderCarousel();
+};
+
+window.left = right;
+window.right = left;
+
+renderCarousel();
