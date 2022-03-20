@@ -1,9 +1,9 @@
 import event from "./event.js";
 
 let loader = document.querySelector(".loader");
-
+let events;
 const loadData = async () => {
-  let events = await event.getAll(localStorage.token);
+  events = await event.getAll(localStorage.token);
 
   if (events.error) {
     alert(`Ошибка пре загрузке событий: ${events.message}`);
@@ -38,13 +38,14 @@ const loadData = async () => {
       )
       .join("\n");
 
+    // <button
+    //           class="btn btn-lg btnn-2 eve-eve-btn" data-bs-toggle="modal" data-bss-tooltip="" type="button"
+    //           data-bs-target="#modal-archive" title="События которые уже прошли">
+    //           Архив событий
+    //         </button>
     innerHTMLOfEvents += `
         <div class="container eve-eve-container" style="padding-top: 24px">
-        <a class="btn btn-lg btnn-2 eve-eve-btn" role="button" href="list.html">Все события</a><button
-          class="btn btn-lg btnn-2 eve-eve-btn" data-bs-toggle="modal" data-bss-tooltip="" type="button"
-          data-bs-target="#modal-archive" title="События которые уже прошли">
-          Архив событий
-        </button>
+        <a class="btn btn-lg btnn-2 eve-eve-btn" role="button" href="list.html">Все события</a>
       </div>
         `;
 
@@ -73,12 +74,81 @@ const carouselData = [
   "Декабрь",
 ];
 
+let openModal = (ev) => {
+  let day = Number(ev.target.innerText);
+  let modal = new bootstrap.Modal(document.getElementById("modal-1"), {});
+
+  let dayText = new Date();
+  dayText.setDate(day);
+  dayText.setMonth(carousel - 1);
+  dayText = dayText.toLocaleString("ru", { day: "2-digit", month: "long" });
+  let dayTextEl = document.querySelector("#modal-day");
+  dayTextEl.innerText = dayText;
+
+  let eventsEl = document.querySelector("#events2");
+  let toRender = events.events
+    .filter((i) => new Date(i.date).getMonth() === carousel)
+    .filter((i) => new Date(i.date).getDate() === day);
+  let rendered = toRender
+    .map(
+      (i) => `
+                  <div class="container eve-modal-eve-container">
+                <div
+                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"
+                >
+                  <div
+                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"
+                  >
+                    <h4 class="eve-modal-eve-header-h">${i.title}</h4>
+                  </div>
+                  <div
+                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"
+                  >
+                    <div class="alert alert-danger tags" role="alert">
+                      ${i.tags
+                        .map((j) => `<span><strong>${j}</strong></span>`)
+                        .join("\n")}
+                    </div>
+                    <h5
+                      class="d-xl-flex align-items-xl-center eve-modal-eve-header-h"
+                      style="margin-right: 15px; margin-left: 15px"
+                    >
+                      ${moment(new Date(i.date)).locale("ru").calendar()}
+                    </h5>
+                    <a
+                      class="btn btn-sm btnn eve-modal-chat-btn"
+                      type="button"
+                      href="${i.link}"
+                    >
+                      Перейти в чат
+                    </a>
+                  </div>
+                </div>
+                <p class="eve-modal-eve-body-p">
+                  ${i.desc}
+                </p>
+              </div>
+
+  `
+    )
+    .join("\n");
+
+  eventsEl.innerHTML = rendered;
+
+  modal.toggle();
+};
+
 let renderCalendar = () => {
   let items = Array.prototype.slice.call(
     document.querySelector("#calendar").querySelectorAll(".row > .col")
   );
 
   let buttons = items.map((i) => i.querySelector("button"));
+
+  // reset
+  buttons.forEach((i) => {
+    i.className = "btn cale-btn";
+  });
 
   let renderCarouselMonth = (offset, maxDays) => {
     let j = 1;
@@ -100,6 +170,7 @@ let renderCalendar = () => {
         } else {
           i.innerText = k;
           i.style.display = "block";
+          i.addEventListener("click", openModal);
 
           k++;
         }
@@ -168,6 +239,23 @@ let renderCalendar = () => {
   }
 
   renderCarouselMonth(offset, maxDays);
+
+  // to show
+  let month = carousel;
+  let toRender = events.events.filter(
+    (i) => new Date(i.date).getUTCMonth() === month
+  );
+
+  let workingButtons = buttons
+    .filter((i) => i.disabled === false)
+    .filter((i) => i.style.display !== "none");
+
+  toRender.forEach((i) => {
+    let day = new Date(i.date).getDate();
+
+    workingButtons[day].classList.remove("cale-btn");
+    workingButtons[day].classList.add("cale-btn-sel");
+  });
 };
 let renderCarousel = () => {
   let carEl = document.querySelector("#carousel");

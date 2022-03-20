@@ -16,10 +16,8 @@
     <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/loader.css" />
-
     <script src="./assets/js/need_auth.js" type="module"></script>
   </head>
-
   <body>
     <div class="loader loader--active">
       <div class="loader__icon"></div>
@@ -29,7 +27,6 @@
       <div class="loader__tile"></div>
       <div class="loader__tile"></div>
     </div>
-
     <div class="row main-row">
       <div class="col-auto menu-col">
         <div
@@ -130,15 +127,7 @@
               style="margin: 0px; margin-bottom: 25px; height: 12%"
             >
               <div class="col">
-                <button class="btn cale-btn" type="button">
-                  28<sup
-                    data-bs-toggle="tooltip"
-                    data-bss-tooltip=""
-                    data-bs-placement="right"
-                    title="Есть непрочитаные события"
-                    >⦁</sup
-                  >
-                </button>
+                <button class="btn cale-btn" type="button">28</button>
               </div>
               <div class="col" style="font-size: 30px">
                 <button class="btn cale-btn" type="button">29</button>
@@ -170,15 +159,7 @@
                 <button class="btn cale-btn" type="button">5</button>
               </div>
               <div class="col" style="font-size: 30px">
-                <button class="btn cale-btn" type="button">
-                  6<sup
-                    data-bs-toggle="tooltip"
-                    data-bss-tooltip=""
-                    data-bs-placement="right"
-                    title="Есть непрочитаные события"
-                    >⦁</sup
-                  >
-                </button>
+                <button class="btn cale-btn" type="button">6</button>
               </div>
               <div class="col" style="width: 100%; font-size: 30px">
                 <button class="btn cale-btn" type="button">7</button>
@@ -227,20 +208,7 @@
                 <button class="btn cale-btn" type="button">18</button>
               </div>
               <div class="col" style="font-size: 30px">
-                <button
-                  class="btn cale-btn-sel"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#modal-1"
-                >
-                  19<sup
-                    data-bs-toggle="tooltip"
-                    data-bss-tooltip=""
-                    data-bs-placement="right"
-                    title="Есть непрочитаные события"
-                    >⦁</sup
-                  >
-                </button>
+                <button class="btn cale-btn" type="button">19</button>
               </div>
               <div class="col" style="font-size: 30px">
                 <button class="btn cale-btn" type="button">20</button>
@@ -331,21 +299,21 @@
           <div class="modal-header eve-modal-header">
             <div class="row" style="width: 100%">
               <div class="col">
-                <h1 class="modal-title">19 марта</h1>
+                <h1 class="modal-title" id="modal-day">19 марта</h1>
               </div>
               <div
                 class="col d-xl-flex justify-content-xl-end align-items-xl-center"
               >
-                <div class="form-check">
-                  <input
-                    class="form-check-input d-xl-flex align-items-xl-center"
-                    type="checkbox"
-                    id="formCheck-1"
-                    style="margin-top: 2px; margin-right: 6px"
-                  /><label class="form-check-label" for="formCheck-1"
-                    >Просмотренно</label
-                  >
-                </div>
+                <!--                <div class="form-check">-->
+                <!--                  <input-->
+                <!--                    class="form-check-input d-xl-flex align-items-xl-center"-->
+                <!--                    type="checkbox"-->
+                <!--                    id="formCheck-1"-->
+                <!--                    style="margin-top: 2px; margin-right: 6px"-->
+                <!--                  /><label class="form-check-label" for="formCheck-1"-->
+                <!--                    >Просмотренно</label-->
+                <!--                  >-->
+                <!--                </div>-->
                 <button
                   class="btn"
                   type="button"
@@ -366,226 +334,142 @@
           </div>
           <div class="modal-body eve-modal-body">
             <h2 class="eve-modal-body-h">События:</h2>
-            <div>
-              <div class="container eve-modal-eve-container">
-                <div
-                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"
-                >
-                  <div
-                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"
-                  >
-                    <h4 class="eve-modal-eve-header-h">Событие 1</h4>
-                  </div>
-                  <div
-                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"
-                  >
-                    <div class="alert alert-danger tags" role="alert">
-                      <span><strong>Тег 2</strong></span>
-                    </div>
-                    <h5
-                      class="d-xl-flex align-items-xl-center eve-modal-eve-header-h"
-                      style="margin-right: 15px; margin-left: 15px"
-                    >
-                      15:49
-                    </h5>
-                    <button
-                      class="btn btn-sm btnn eve-modal-chat-btn"
-                      type="button"
-                    >
-                      Перейти в чат
-                    </button>
-                  </div>
-                </div>
-                <p class="eve-modal-eve-body-p">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  fermentum sed felis a rhoncus. Quisque commodo varius cursus.
-                  Cras at urna nulla. Donec non dui lorem. Phasellus rhoncus
-                  fringilla augue eget egestas. Integer semper ultrices lorem,
-                  nec semper velit efficitur in. Suspendisse maximus massa
-                  rhoncus, finibus nunc ac, semper enim. Cras dignissim
-                  scelerisque tristique.
-                </p>
-              </div>
-              <div class="container eve-modal-eve-container">
-                <div
-                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"
-                >
-                  <div
-                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"
-                  >
-                    <h4 class="eve-modal-eve-header-h">Событие 2</h4>
-                  </div>
-                  <div
-                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"
-                  >
-                    <button class="btn btnn eve-modal-chat-btn" type="button">
-                      Перейти в чат
-                    </button>
-                  </div>
-                </div>
-                <p class="eve-modal-eve-body-p">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  fermentum sed felis a rhoncus. Quisque commodo varius cursus.
-                  Cras at urna nulla. Donec non dui lorem.
-                </p>
-              </div>
-              <div class="container eve-modal-eve-container">
-                <div
-                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"
-                >
-                  <div
-                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"
-                  >
-                    <h4 class="eve-modal-eve-header-h">Событие 3</h4>
-                  </div>
-                  <div
-                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"
-                  >
-                    <button class="btn btnn eve-modal-chat-btn" type="button">
-                      Перейти в чат
-                    </button>
-                  </div>
-                </div>
-                <p class="eve-modal-eve-body-p">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  fermentum sed felis a rhoncus.
-                </p>
-              </div>
-            </div>
+            <div id="events2"></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="modal-archive">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content eve-modal-content">
-          <div class="modal-header eve-modal-header eve-modal-arcive-header">
-            <div class="row" style="width: 100%">
-              <div class="col">
-                <h1 class="modal-title">Архив событий</h1>
-              </div>
-              <div
-                class="col d-xl-flex justify-content-xl-end align-items-xl-center"
-              >
-                <button
-                  class="btn"
-                  type="button"
-                  style="color: var(--bs-white); margin-right: -16px"
-                  data-bs-dismiss="modal"
-                >
-                  <i class="fas fa-times" style="font-size: 32px"></i>
-                </button>
-              </div>
-            </div>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-              style="display: none"
-            ></button>
-          </div>
-          <div class="modal-body eve-modal-body">
-            <div>
-              <div class="container eve-modal-eve-container">
-                <div
-                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"
-                >
-                  <div
-                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"
-                  >
-                    <h4 class="eve-modal-eve-header-h">Событие 1</h4>
-                  </div>
-                  <div
-                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"
-                  >
-                    <h5
-                      class="d-xl-flex align-items-xl-center eve-modal-eve-header-h"
-                      style="margin-right: 15px"
-                    >
-                      15 января 2022
-                    </h5>
-                    <button class="btn btnn eve-modal-chat-btn" type="button">
-                      Перейти в чат
-                    </button>
-                  </div>
-                </div>
-                <p class="eve-modal-eve-body-p">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  fermentum sed felis a rhoncus. Quisque commodo varius cursus.
-                  Cras at urna nulla. Donec non dui lorem. Phasellus rhoncus
-                  fringilla augue eget egestas. Integer semper ultrices lorem,
-                  nec semper velit efficitur in. Suspendisse maximus massa
-                  rhoncus, finibus nunc ac, semper enim. Cras dignissim
-                  scelerisque tristique.
-                </p>
-              </div>
-              <div class="container eve-modal-eve-container">
-                <div
-                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"
-                >
-                  <div
-                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"
-                  >
-                    <h4 class="eve-modal-eve-header-h">Событие 2</h4>
-                  </div>
-                  <div
-                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"
-                  >
-                    <h5
-                      class="d-xl-flex align-items-xl-center eve-modal-eve-header-h"
-                      style="margin-right: 15px"
-                    >
-                      15 января 2022
-                    </h5>
-                    <button class="btn btnn eve-modal-chat-btn" type="button">
-                      Перейти в чат
-                    </button>
-                  </div>
-                </div>
-                <p class="eve-modal-eve-body-p">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  fermentum sed felis a rhoncus. Quisque commodo varius cursus.
-                  Cras at urna nulla. Donec non dui lorem.
-                </p>
-              </div>
-              <div class="container eve-modal-eve-container">
-                <div
-                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"
-                >
-                  <div
-                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"
-                  >
-                    <h4 class="eve-modal-eve-header-h">Событие 3</h4>
-                  </div>
-                  <div
-                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"
-                  >
-                    <h5
-                      class="d-xl-flex align-items-xl-center eve-modal-eve-header-h"
-                      style="margin-right: 15px"
-                    >
-                      15 января 2022
-                    </h5>
-                    <button class="btn btnn eve-modal-chat-btn" type="button">
-                      Перейти в чат
-                    </button>
-                  </div>
-                </div>
-                <p class="eve-modal-eve-body-p">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  fermentum sed felis a rhoncus.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--    <div class="modal fade" role="dialog" tabindex="-1" id="modal-archive">-->
+    <!--      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">-->
+    <!--        <div class="modal-content eve-modal-content">-->
+    <!--          <div class="modal-header eve-modal-header eve-modal-arcive-header">-->
+    <!--            <div class="row" style="width: 100%">-->
+    <!--              <div class="col">-->
+    <!--                <h1 class="modal-title">Архив событий</h1>-->
+    <!--              </div>-->
+    <!--              <div-->
+    <!--                class="col d-xl-flex justify-content-xl-end align-items-xl-center"-->
+    <!--              >-->
+    <!--                <button-->
+    <!--                  class="btn"-->
+    <!--                  type="button"-->
+    <!--                  style="color: var(&#45;&#45;bs-white); margin-right: -16px"-->
+    <!--                  data-bs-dismiss="modal"-->
+    <!--                >-->
+    <!--                  <i class="fas fa-times" style="font-size: 32px"></i>-->
+    <!--                </button>-->
+    <!--              </div>-->
+    <!--            </div>-->
+    <!--            <button-->
+    <!--              type="button"-->
+    <!--              class="btn-close"-->
+    <!--              data-bs-dismiss="modal"-->
+    <!--              aria-label="Close"-->
+    <!--              style="display: none"-->
+    <!--            ></button>-->
+    <!--          </div>-->
+    <!--          <div class="modal-body eve-modal-body">-->
+    <!--            <div>-->
+    <!--              <div class="container eve-modal-eve-container">-->
+    <!--                <div-->
+    <!--                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"-->
+    <!--                >-->
+    <!--                  <div-->
+    <!--                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"-->
+    <!--                  >-->
+    <!--                    <h4 class="eve-modal-eve-header-h">Событие 1</h4>-->
+    <!--                  </div>-->
+    <!--                  <div-->
+    <!--                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"-->
+    <!--                  >-->
+    <!--                    <h5-->
+    <!--                      class="d-xl-flex align-items-xl-center eve-modal-eve-header-h"-->
+    <!--                      style="margin-right: 15px"-->
+    <!--                    >-->
+    <!--                      15 января 2022-->
+    <!--                    </h5>-->
+    <!--                    <button class="btn btnn eve-modal-chat-btn" type="button">-->
+    <!--                      Перейти в чат-->
+    <!--                    </button>-->
+    <!--                  </div>-->
+    <!--                </div>-->
+    <!--                <p class="eve-modal-eve-body-p">-->
+    <!--                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin-->
+    <!--                  fermentum sed felis a rhoncus. Quisque commodo varius cursus.-->
+    <!--                  Cras at urna nulla. Donec non dui lorem. Phasellus rhoncus-->
+    <!--                  fringilla augue eget egestas. Integer semper ultrices lorem,-->
+    <!--                  nec semper velit efficitur in. Suspendisse maximus massa-->
+    <!--                  rhoncus, finibus nunc ac, semper enim. Cras dignissim-->
+    <!--                  scelerisque tristique.-->
+    <!--                </p>-->
+    <!--              </div>-->
+    <!--              <div class="container eve-modal-eve-container">-->
+    <!--                <div-->
+    <!--                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"-->
+    <!--                >-->
+    <!--                  <div-->
+    <!--                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"-->
+    <!--                  >-->
+    <!--                    <h4 class="eve-modal-eve-header-h">Событие 2</h4>-->
+    <!--                  </div>-->
+    <!--                  <div-->
+    <!--                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"-->
+    <!--                  >-->
+    <!--                    <h5-->
+    <!--                      class="d-xl-flex align-items-xl-center eve-modal-eve-header-h"-->
+    <!--                      style="margin-right: 15px"-->
+    <!--                    >-->
+    <!--                      15 января 2022-->
+    <!--                    </h5>-->
+    <!--                    <button class="btn btnn eve-modal-chat-btn" type="button">-->
+    <!--                      Перейти в чат-->
+    <!--                    </button>-->
+    <!--                  </div>-->
+    <!--                </div>-->
+    <!--                <p class="eve-modal-eve-body-p">-->
+    <!--                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin-->
+    <!--                  fermentum sed felis a rhoncus. Quisque commodo varius cursus.-->
+    <!--                  Cras at urna nulla. Donec non dui lorem.-->
+    <!--                </p>-->
+    <!--              </div>-->
+    <!--              <div class="container eve-modal-eve-container">-->
+    <!--                <div-->
+    <!--                  class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"-->
+    <!--                >-->
+    <!--                  <div-->
+    <!--                    class="col offset-xl-0 d-xl-flex justify-content-xl-start align-items-xl-center"-->
+    <!--                  >-->
+    <!--                    <h4 class="eve-modal-eve-header-h">Событие 3</h4>-->
+    <!--                  </div>-->
+    <!--                  <div-->
+    <!--                    class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"-->
+    <!--                  >-->
+    <!--                    <h5-->
+    <!--                      class="d-xl-flex align-items-xl-center eve-modal-eve-header-h"-->
+    <!--                      style="margin-right: 15px"-->
+    <!--                    >-->
+    <!--                      15 января 2022-->
+    <!--                    </h5>-->
+    <!--                    <button class="btn btnn eve-modal-chat-btn" type="button">-->
+    <!--                      Перейти в чат-->
+    <!--                    </button>-->
+    <!--                  </div>-->
+    <!--                </div>-->
+    <!--                <p class="eve-modal-eve-body-p">-->
+    <!--                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin-->
+    <!--                  fermentum sed felis a rhoncus.-->
+    <!--                </p>-->
+    <!--              </div>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/Custom-File-Upload.js"></script>
+    <script src="assets/js/moment.min.js"></script>
     <script src="assets/js/index.js" type="module"></script>
   </body>
 </html>

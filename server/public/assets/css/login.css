@@ -42,6 +42,17 @@ body input {
   background: linear-gradient(180deg, #5561ff 0%, #3643fc 100%, #3643fc 100%);
   border-radius: 12px;
 }
+.g-signin2 {
+  height: 40px;
+  width: 200px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  background: linear-gradient(180deg, #5561ff 0%, #3643fc 100%, #3643fc 100%);
+  border-radius: 12px;
+}
 .foot {
   width: 105%;
   height: 100%;
