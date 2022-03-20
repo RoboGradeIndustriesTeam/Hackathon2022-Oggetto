@@ -13,5 +13,6 @@ router.post(
 router.post("/login", [], userController.auth);
 router.get("/me", [authMiddleware], userController.me);
 router.patch("/me", [authMiddleware], userController.changeMe);
+router.post("/google", [], userController.googleAuth);
 
 export default router;

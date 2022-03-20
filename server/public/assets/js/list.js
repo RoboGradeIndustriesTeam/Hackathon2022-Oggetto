@@ -21,7 +21,6 @@ const loadData = async () => {
 await loadData();
 loader.classList.remove("loader--active");
 
-
 let data = events.events.reverse();
 
 const render = () => {
@@ -38,8 +37,7 @@ const render = () => {
     `<button class="btn btn-success tags" onclick="selectTag(undefined)" type="button" style="margin-right: 15px">Без фильтра</button>`;
 
   // render events
-  let toRender = JSON.parse(JSON.stringify(data))
-
+  let toRender = JSON.parse(JSON.stringify(data));
 
   if (filter_tag) {
     toRender = toRender.filter((i) => i.tags.indexOf(filter_tag) !== -1);

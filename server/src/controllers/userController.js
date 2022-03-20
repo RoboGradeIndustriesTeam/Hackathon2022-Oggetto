@@ -180,4 +180,46 @@ export default {
       return res.status(200).json({ error: 2 });
     }
   },
+  /*
+        Method: POST
+        URL: /users/google
+
+        Middlewares:
+            console
+
+        Request body:
+        {
+            "email": "<user email>"
+         }
+
+        Response body:
+        {
+            "error": <0-1>,
+            <if error === 0>
+            "user": { <user object> },
+            "jwt": "< jwt token >"
+            <endif>
+        }
+
+        Errors:
+        0 - OK
+        1 - Email not created
+    */
+  async googleAuth(req, res) {
+    const { email } = req.body;
+
+    const candidate = await user.findOne({ email });
+
+    if (!candidate) {
+      return res.status(404).json({ error: 1 });
+    }
+
+    let jwt_payload = {
+      user_id: candidate._id,
+    };
+
+    let token = jwt.sign(jwt_payload, process.env.SECRET || "SECRET");
+
+    return res.status(200).json({ error: 0, user: candidate, jwt: token });
+  },
 };

@@ -86,4 +86,37 @@ export default {
       }
     } catch (e) {}
   },
+  async authWithGoogle(email) {
+    let url = `${config.baseUrl}/users/google`;
+
+    try {
+      let resp = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      let data = await resp.json();
+
+      if (data.error === 1) {
+        return {
+          user: undefined,
+          jwt: undefined,
+          message: "Аккаунт не существует",
+          error: true,
+        };
+      } else if (data.error === 0) {
+        return {
+          user: data.user,
+          jwt: data.jwt,
+          message: undefined,
+          error: false,
+        };
+      }
+    } catch (e) {}
+  },
 };

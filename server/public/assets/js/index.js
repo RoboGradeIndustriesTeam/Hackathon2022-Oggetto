@@ -11,8 +11,8 @@ const loadData = async () => {
     let innerHTMLOfEvents = ``;
 
     innerHTMLOfEvents += events.events
-        .map(
-            (i) => `<div class="container eve-eve-container">
+      .map(
+        (i) => `<div class="container eve-eve-container">
         <h3 class="eve-eve-h">${i.title}</h3>
         <p class="text-nowrap text-truncate eve-eve-p">
           ${i.desc}
@@ -22,21 +22,21 @@ const loadData = async () => {
         </p>
         <div class="text-nowrap d-xl-flex justify-content-xl-start">
           ${i.tags
-                .map(
-                    (j) => `
+            .map(
+              (j) => `
           <div class="alert alert-success tags" role="alert" style="margin-bottom: 15px; margin-right: 15px">
           <span><strong>${j}</strong></span>
         </div>
           `
-                )
-                .join("\n")}
+            )
+            .join("\n")}
         </div>
         <a class="btn btnn btn-sel eve-eve-btn" href="${i.link}">
           Перейти в чат...
         </a>
       </div>`
-        )
-        .join("\n");
+      )
+      .join("\n");
 
     // <button
     //           class="btn btn-lg btnn-2 eve-eve-btn" data-bs-toggle="modal" data-bss-tooltip="" type="button"
@@ -87,11 +87,11 @@ let openModal = (ev) => {
 
   let eventsEl = document.querySelector("#events2");
   let toRender = events.events
-      .filter((i) => new Date(i.date).getMonth() === carousel - 1)
-      .filter((i) => new Date(i.date).getDate() === day);
+    .filter((i) => new Date(i.date).getMonth() === carousel - 1)
+    .filter((i) => new Date(i.date).getDate() === day);
   let rendered = toRender
-      .map(
-          (i) => `
+    .map(
+      (i) => `
                   <div class="container eve-modal-eve-container">
                 <div
                   class="row d-xl-flex align-items-xl-center eve-modal-eve-header-row"
@@ -105,8 +105,11 @@ let openModal = (ev) => {
                     class="col d-xl-flex justify-content-xl-end eve-modal-eve-header-btn"
                   >
                   ${i.tags
-              .map((j) => `<div class="alert alert-danger tags" role="alert"><span><strong>${j}</strong></span></div>`)
-              .join("\n")}
+                    .map(
+                      (j) =>
+                        `<div class="alert alert-danger tags" role="alert"><span><strong>${j}</strong></span></div>`
+                    )
+                    .join("\n")}
                     
                       
                     
@@ -131,8 +134,8 @@ let openModal = (ev) => {
               </div>
 
   `
-      )
-      .join("\n");
+    )
+    .join("\n");
 
   eventsEl.innerHTML = rendered;
 
@@ -141,7 +144,7 @@ let openModal = (ev) => {
 
 let renderCalendar = () => {
   let items = Array.prototype.slice.call(
-      document.querySelector("#calendar").querySelectorAll(".row > .col")
+    document.querySelector("#calendar").querySelectorAll(".row > .col")
   );
 
   let buttons = items.map((i) => i.querySelector("button"));
@@ -244,12 +247,12 @@ let renderCalendar = () => {
   // to show
   let month = carousel - 1;
   let toRender = events.events.filter(
-      (i) => new Date(i.date).getUTCMonth() === month
+    (i) => new Date(i.date).getUTCMonth() === month
   );
 
   let workingButtons = buttons
-      .filter((i) => i.disabled === false)
-      .filter((i) => i.style.display !== "none");
+    .filter((i) => i.disabled === false)
+    .filter((i) => i.style.display !== "none");
 
   toRender.forEach((i) => {
     let day = new Date(i.date).getDate() - 1;
